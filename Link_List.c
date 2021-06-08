@@ -28,7 +28,11 @@ Step 2：我們得先決定，要不要建立一個新的節點？
    int * ptr = new int[100];
  *  釋放掉這塊空間
    delete [] ptr;
- * 可惜C不能用new 跟 delete，要用 malloc 跟 free   
+ * 可惜C不能用new 跟 delete，要用 malloc 跟 free 
+ * 動態配置了 1000 個 int 大小的空間
+   int *p = malloc(sizeof(int) * 1000);
+*  在不使用時使用 free 釋放
+   free(p); 
  **************************************************************************************************/
 #include <stdio.h>
 /*typedef*/
@@ -45,6 +49,9 @@ struct LinkList_Struct{
    int value;
    struct LinkList_Struct * NextList;
 };
+void PrintList(struct LinkList_Struct * head);
+struct LinkList_Struct * reverseList_Iteration(struct LinkList_Struct * head);
+// struct LinkList_Struct * reverseListRecursive(struct LinkList_Struct * head);
 int main()
 {
    UI32 count, i;
@@ -71,17 +78,52 @@ int main()
    }
    printf("\n");
    printf("the input number is :");
-   CurrentList = ListHead;
-   while(1){
-      printf("%d", CurrentList->value);
-      if (CurrentList->NextList == NULL){
-         break;
-      }
-      else{
-         CurrentList = CurrentList->NextList;
-      }
-   }
+  
+  PrintList(ListHead);
+
+
    printf("\n");
+
+   printf("the reverse input number is :");
+   ListHead = reverseList_Iteration(ListHead);
+   PrintList(ListHead);
    system("pause");
    return 0;
+}
+/***********************************************************************************************//**
+ * 迭代法反轉
+   1.取出NextList
+   2.改變head的NextList
+   3.取出head
+   4.改變head
+ **************************************************************************************************/
+struct LinkList_Struct * reverseList_Iteration(struct LinkList_Struct * head) // 迭代
+{
+    struct LinkList_Struct *p = NULL, *q;
+    
+    while (head)
+    {
+        q = head->NextList;
+        head->NextList = p;
+        p = head;
+        head = q;
+    }
+    return p;
+}
+/***********************************************************************************************//**
+ * 匯出linked list
+   1.輸入head
+   2.print 直到 Null
+ **************************************************************************************************/
+void PrintList(struct LinkList_Struct * currentlinked){
+  while(1){
+    printf("%d", currentlinked->value);
+    
+    if (currentlinked->NextList == NULL){
+      break;
+    }
+    else{
+      currentlinked = currentlinked->NextList;
+    }
+  }
 }
