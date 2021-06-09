@@ -91,11 +91,44 @@ int main()
    return 0;
 }
 /***********************************************************************************************//**
- * 迭代法反轉
-   1.取出NextList
-   2.改變head的NextList
-   3.取出head
-   4.改變head
+* 237. Delete Node in a Linked List
+  题目描述：
+  Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+**************************************************************************************************/
+/***********************************************************************************************//**
+* 203. Remove Linked List Elements
+  题目描述：
+  Remove all elements from a linked list of integers that have value val.
+  Example
+  Given: 1 –> 2 –> 6 –> 3 –> 4 –> 5 –> 6, val = 6
+  Return: 1 –> 2 –> 3 –> 4 –> 5
+**************************************************************************************************/
+/***********************************************************************************************//**
+* 83. Remove Duplicates from Sorted List
+  题目描述：
+  Given a sorted linked list, delete all duplicates such that each element appear only once.
+  For example,
+  Given 1->1->2, return 1->2.
+  Given 1->1->2->3->3, return 1->2->3.
+**************************************************************************************************/
+/***********************************************************************************************//**
+* 86. Partition List
+  题目描述：
+  Given a linked list and a value x, partition it 
+  such that all nodes less than x come before nodes greater than or equal to x.
+  You should preserve the original relative order of the nodes in each of the two partitions.
+  For example,
+  Given 1->4->3->2->5->2 and x = 3,
+  return 1->2->2->4->3->5.
+**************************************************************************************************/
+/***********************************************************************************************//**
+ *206. Reverse Linked List
+  题目描述：Reverse a singly linked list.
+ *迭代法反轉
+  1.取出NextList
+  2.改變head的NextList
+  3.取出head
+  4.改變head
  **************************************************************************************************/
 struct LinkList_Struct * reverseList_Iteration(struct LinkList_Struct * head) // 迭代
 {
